@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все новости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<style>
+    input:not(:placeholder-shown), .form-block input:focus {
+        color: black;
+        border: 1px solid transparent;
+    }
+
+    ul {
+        list-style: none;
+    }
+</style>
+<body>
+
+<section>
+    <div class="container">
+        <div class="object_wrapper">
+            <div class="object_wrapper-top">
+                <div class="object_wrapper-top-left">
+                    <a href="#">
+                        <p>Новости</p>
+                    </a>
+
+                </div>
+                <div class="object_wrapper-top-right">
+                    <div class="search">
+                        <img th:src="@{/images/search.svg}">
+                        <input type="search" placeholder="Поиск...">
+                    </div>
+                    <ul>
+                        <li><img th:src="@{/images/setting.svg}"></li>
+                        <li><img th:src="@{/images/folder.svg}"></li>
+                        <li><img th:src="@{/images/send.svg}"></li>
+                        <li><img th:src="@{/images/user.svg}"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="object_wrapper_blocks">
+                <ul class="allObject">
+                    <li th:each="news : ${newsList}">
+                        <h1 th:text="${news.title}"></h1>
+                        <div class="line"></div>
+                        <p th:text="${news.content}"></p>
+                        <a th:href="@{/news/delete/{id}(id = ${news.id})}" th:if="${#authorization.expression('hasAuthority(''Администратор'')')}" class="delete_btn">Удалить</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="object_bottom">
+            <div class="object_bottom-left">
+                <a th:href="@{/logout}">Войти в другой аккаунт</a>
+                <p th:text="${'Ваша роль: ' + user.roles}">Вы пользователь</p>
+            </div>
+            <div class="object_bottom-right">
+                <a th:href="@{/news/create}" th:if="${#authorization.expression('hasAuthority(''Администратор'')')}">Создать заявку</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

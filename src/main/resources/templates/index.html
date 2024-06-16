@@ -28,7 +28,8 @@
             <div class="object_wrapper-top">
                 <div class="object_wrapper-top-left">
                     <a href="#">
-                        <p>Новости</p>
+                        <p th:if="${#authorization.expression('hasAuthority(''Администратор'')')}">Админ-Панель</p>
+                        <p th:if="${#authorization.expression('hasAuthority(''Пользователь'')')}">Новости</p>
                     </a>
 
                 </div>

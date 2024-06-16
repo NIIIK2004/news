@@ -90,6 +90,7 @@
     color: var(--black);
 }
 
+.object_bottom-right button,
 .object_bottom-left a,
 .object_bottom-right a {
     text-decoration: none;
@@ -104,6 +105,7 @@
     transition: .2s;
 }
 
+.object_bottom-right button:active,
 .object_bottom-left a:active,
 .object_bottom-right a:active {
     transform: scale(.98);
@@ -129,6 +131,7 @@
     position: relative;
 }
 
+.allObject li input,
 .allObject li h1 {
     font-weight: 700;
     font-size: 21px;
@@ -143,7 +146,18 @@
     width: 312px;
 }
 
+.allObject li textarea,
+.allObject li input {
+    border: 1px solid transparent;
+    outline: none;
+    resize: none;
+    font-family: 'Inter', sans-serif;
+}
 
+.allObject li textarea {
+    height: 150px;
+}
+.allObject li textarea,
 .allObject li p {
     font-weight: 500;
     font-size: 14px;
@@ -151,6 +165,8 @@
     color: #787878;
     max-width: 313px;
 }
+
+
 
 .line {
     border: 1px solid var(--gray);
